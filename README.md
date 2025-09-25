@@ -1,7 +1,5 @@
 # Partner-MAS
 
-# Collaboration Framework Architecture Design (Business-MAS-v2)
-
 ## Overview
 
 The Collaboration Framework (Business-MAS-v2) is a sophisticated multi-agent system designed for co-investor selection that emphasizes adaptive agent design, strategic planning, and hierarchical decision-making. Unlike iterative debate systems, this framework focuses on dynamic agent creation, specialized evaluation, and supervisor-guided final selection through multiple decision modes.
