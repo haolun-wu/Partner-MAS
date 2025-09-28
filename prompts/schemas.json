@@ -1,0 +1,159 @@
+{
+  "planner_response_schema": {
+    "type": "object",
+    "properties": {
+      "strategic_guidance": {
+        "type": "string",
+        "description": "High-level strategic guidance for co-investor selection"
+      },
+      "agents": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Name of the specialized agent"
+            },
+            "role": {
+              "type": "string",
+              "description": "Role of the specialized agent"
+            },
+            "ability": {
+              "type": "string",
+              "description": "Abilities and expertise of the agent"
+            },
+            "profile": {
+              "type": "string",
+              "description": "Specific focus areas and evaluation criteria"
+            }
+          },
+          "required": ["name", "role", "ability", "profile"]
+        }
+      }
+    },
+    "required": ["strategic_guidance", "agents"]
+  },
+  "specialized_agent_response_schema": {
+    "type": "object",
+    "properties": {
+      "evaluation_focus": {
+        "type": "string",
+        "description": "Key features the agent focuses on for evaluation"
+      },
+      "overall_rationale": {
+        "type": "string",
+        "description": "General explanation of ranking methodology"
+      },
+      "ranked_candidates": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "firm_id": {
+              "type": "string",
+              "description": "ID of the candidate firm"
+            },
+            "rank": {
+              "type": "integer",
+              "description": "Rank assigned to the candidate (starting from 1)"
+            },
+            "alignment_score": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10,
+              "description": "Alignment score from 1 (poor) to 10 (perfect)"
+            },
+            "rationale": {
+              "type": "string",
+              "description": "Clear explanation for the ranking and score"
+            }
+          },
+          "required": ["firm_id", "rank", "alignment_score", "rationale"]
+        }
+      }
+    },
+    "required": ["evaluation_focus", "overall_rationale", "ranked_candidates"]
+  },
+  "supervisor_selection_schema": {
+    "type": "object",
+    "properties": {
+      "selected_candidates": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "List of selected firm IDs in order of preference"
+      },
+      "rationale": {
+        "type": "string",
+        "description": "Detailed explanation of selection criteria and reasoning"
+      }
+    },
+    "required": ["selected_candidates", "rationale"]
+  },
+  "agent_importance_ranking_schema": {
+    "type": "object",
+    "properties": {
+      "agent_importance_ranking": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "agent_name": {
+              "type": "string",
+              "description": "Name of the agent"
+            },
+            "rank": {
+              "type": "integer",
+              "description": "Importance rank (1 = most important)"
+            },
+            "rationale": {
+              "type": "string",
+              "description": "Explanation for the importance ranking"
+            }
+          },
+          "required": ["agent_name", "rank", "rationale"]
+        }
+      },
+      "overall_ranking_rationale": {
+        "type": "string",
+        "description": "Summary of strategic thinking behind ranking order"
+      }
+    },
+    "required": ["agent_importance_ranking", "overall_ranking_rationale"]
+  },
+  "agent_weights_schema": {
+    "type": "object",
+    "properties": {
+      "agent_weights": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "agent_name": {
+              "type": "string",
+              "description": "Name of the agent"
+            },
+            "weight": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "Numerical weight (must sum to 1.0 across all agents)"
+            },
+            "rationale": {
+              "type": "string",
+              "description": "Explanation for the assigned weight"
+            }
+          },
+          "required": ["agent_name", "weight", "rationale"]
+        }
+      },
+      "overall_weighting_rationale": {
+        "type": "string",
+        "description": "Summary of strategic thinking behind weight distribution"
+      }
+    },
+    "required": ["agent_weights", "overall_weighting_rationale"]
+  }
+}
